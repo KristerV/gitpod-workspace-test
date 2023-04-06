@@ -1,0 +1,11 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Start Elixir
+    before: printf 'export PATH="%s:$PATH"\n' "/workspace/.asdf/bin:/workspace/.asdf/shims" >> $HOME/.bashrc && exit
+    init: |
+      mix local.hex --force
+      mix local.rebar --force
+      mix archive.install hex phx_new --force
+    command: iex
